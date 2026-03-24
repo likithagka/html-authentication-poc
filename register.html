@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Register Page">
+<meta name="author" content="Assignment">
+<title>Register</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+<div class="card shadow-sm">
+<div class="card-body p-4">
+
+<h3 class="text-center mb-4 fw-bold text-dark">Create Your Account</h3>
+
+<form action="login.html">
+
+<div class="mb-2">
+<label class="form-label">Name</label>
+<input type="text" class="form-control" placeholder="Enter your full name" required>
+</div>
+
+<div class="mb-2">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" placeholder="Enter your email address" required>
+</div>
+
+<div class="mb-2">
+<label class="form-label">Phone Number</label>
+<input type="tel" class="form-control" placeholder="Enter your phone number" required>
+</div>
+<div class="mb-2">
+<label class="form-label">Password</label>
+<div class="input-group">
+<input type="password" class="form-control" id="password" placeholder="Create a password" required>
+<span class="input-group-text" onclick="togglePassword()" style="cursor:pointer;">
+<i class="bi bi-eye"></i>
+</span>
+</div>
+<small id="strengthText" class="text-muted d-block" style="min-height: 20px;"></small>
+</div>
+<div class="mb-2">
+<label class="form-label">Confirm Password</label>
+<div class="input-group">
+<input type="password" class="form-control" id="confirm" placeholder="Confirm your password" required>
+<span class="input-group-text" onclick="togglePassword()" style="cursor:pointer;">
+<i class="bi bi-eye"></i>
+</span>
+</div>
+</div>
+
+<div class="d-grid mt-3">
+<button type="submit" class="btn custom-btn">Create Account</button>
+</div>
+
+</form>
+
+<div class="text-center mt-3">
+<a href="login.html" class="text-decoration-none">Already have an account?</a>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+function togglePassword() {
+  const input = document.getElementById("password");
+  input.type = input.type === "password" ? "text" : "password";
+}
+function toggleConfirm() {
+  const input = document.getElementById("confirm");
+  input.type = input.type === "password" ? "text" : "password";
+}
+document.getElementById("password").addEventListener("input", function() {
+  const val = this.value;
+  const text = document.getElementById("strengthText");
+
+  if (val.length < 6) {
+    text.innerHTML = "Weak password";
+    text.style.color = "red";
+  } else if (val.length < 10) {
+    text.innerHTML = "Medium strength";
+    text.style.color = "orange";
+  } else {
+    text.innerHTML = "Strong password";
+    text.style.color = "green";
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
